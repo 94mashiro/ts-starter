@@ -1,0 +1,62 @@
+{
+  "name": "@mashwang/[name]",
+  "version": "0.0.0-alpha.0",
+  "packageManager": "pnpm@6.32.3",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Mashiro Wang<hyperoot@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mashirowang/[name].git"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.ejs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "release": "bumpp --commit --push --tag && pnpm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@mashwang/eslint-config": "^0.6.3",
+    "@mashwang/prettier-config": "^0.6.0",
+    "@mashwang/tsconfig": "^0.6.0",
+    "bumpp": "^7.1.1",
+    "eslint": "^8.13.0",
+    "esno": "^0.14.1",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.3",
+    "unbuild": "^0.7.4",
+    "vite": "^2.9.4",
+    "vitest": "^0.9.3"
+  },
+  "volta": {
+    "node": "16.14.2"
+  }
+}
